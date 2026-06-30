@@ -1,4 +1,47 @@
-This paper addresses a core challenge in generative modeling: synthesizing realistic human faces using Generative Adversarial Networks (GANs). While Deep Convolutional GANs (DCGANs) have shown strong results in image synthesis, they often suffer from training instability, mode collapse, and difficulty preserving fine facial detail and long-range structural consistency, issues that are especially problematic for faces, where symmetry, texture, and geometric relationships between features (eyes, nose, mouth, jawline) must be maintained for the output to look convincingly real.
-To address these limitations, this work proposes an Attention-Guided and Regularized DCGAN. The architecture integrates a custom-designed Local Multi-Head Channel Self-Attention (LMHCSA) module into the generator and discriminator, enabling the network to better capture long-range feature dependencies across facial regions rather than relying solely on local convolutional receptive fields. Training stability is further improved through spectral normalization and L2 weight decay regularization, which together help prevent mode collapse and accelerate convergence during adversarial training.
-The model was trained on a preprocessed and augmented subset of the Flickr-Faces-HQ (FFHQ) dataset. Performance was evaluated using Fréchet Inception Distance (FID) and Complex Wavelet Structural Similarity Index (CW-SSIM), supplemented by qualitative human visual inspection for realism and artifact reduction. To test whether the generated images preserved meaningful identity information (not just visual realism), a downstream face verification experiment was conducted on the Labeled Faces in the Wild (LFW) benchmark.
-Results showed that the proposed model outperformed a vanilla DCGAN baseline, achieving a best validation FID of 30.93 and test FID of 35.73, alongside a 99.80% face verification accuracy and a perfect ROC-AUC of 1.0000 on the downstream task. An ablation study further isolated the individual contributions of the attention mechanism and regularization techniques. The thesis also includes a dedicated discussion of ethical considerations, including deepfake risks, biometric security implications, and dataset bias, reflecting a responsible approach to generative AI research with direct applications in biometric and identity-verification systems.
+# Attention-Guided and Regularized GAN for High-Fidelity Human Face Generation
+
+MSc thesis project addressing a core challenge in generative modeling: synthesizing 
+realistic human faces using GANs. Standard DCGANs often suffer from training 
+instability, mode collapse, and loss of fine facial detail — this project introduces 
+an attention-based architecture with regularization techniques to solve these issues.
+
+## Key Results
+- Test FID: 35.73 (Best validation FID: 30.93)
+- Face verification accuracy (LFW): 99.80%
+- ROC-AUC: 99.99
+- Outperformed vanilla DCGAN baseline across all metrics
+
+## Approach
+The architecture integrates a custom-designed Local Multi-Head Channel 
+Self-Attention (LMHCSA) module into both the generator and discriminator, 
+enabling the network to capture long-range feature dependencies across facial 
+regions (eyes, nose, mouth, jawline) rather than relying solely on local 
+convolutional receptive fields.
+
+Training stability is further improved through:
+- Spectral normalization
+- L2 weight decay regularization
+
+These techniques together help prevent mode collapse and accelerate convergence 
+during adversarial training.
+
+## Dataset
+Trained on a preprocessed and augmented subset of Flickr-Faces-HQ (FFHQ).
+
+## Evaluation
+Performance was assessed using:
+- Fréchet Inception Distance (FID)
+- Complex Wavelet Structural Similarity Index (CW-SSIM)
+- Qualitative human visual inspection for realism and artifact reduction
+
+To verify the generated images preserve meaningful identity information (not just 
+visual realism), a downstream face verification experiment was conducted on 
+the Labeled Faces in the Wild (LFW) benchmark.
+
+An ablation study further isolates the individual contributions of the attention 
+mechanism and regularization techniques.
+
+## Ethical Considerations
+This work includes a dedicated discussion of deepfake risks, biometric security 
+implications, and dataset bias, reflecting a responsible approach to generative 
+AI research with applications in biometric and identity-verification systems.
