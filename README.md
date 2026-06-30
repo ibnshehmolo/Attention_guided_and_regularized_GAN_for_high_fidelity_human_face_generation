@@ -1,6 +1,6 @@
 # Attention-Guided and Regularized GAN for High-Fidelity Human Face Generation
 
-MSc thesis project addressing a core challenge in generative modeling: synthesizing 
+This paper addressing a core challenge in generative modeling: synthesizing 
 realistic human faces using GANs. Standard DCGANs often suffer from training 
 instability, mode collapse, and loss of fine facial detail — this project introduces 
 an attention-based architecture with regularization techniques to solve these issues.
